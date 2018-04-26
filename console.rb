@@ -13,7 +13,7 @@ star2 =Star.new({
     'last_name' => 'Pitt'
     })
 star2.save()
-
+#
 movie1 =Movie.new({
     'title' => 'Drive',
     'genre' => 'Thriller',
@@ -28,17 +28,17 @@ movie2 =Movie.new({
     })
 movie2.save()
 
-casting1 = Casting.new({
-    'star_id' => star1.id, '
-    movie_id' => movie1.id
-    })
-casting1.save()
-
-casting2 = Casting.new({
-    'star_id' => star2.id, '
-    movie_id' => movie2.id
-    })
-casting1.save()
+# casting1 = Casting.new({
+#     'star_id' => star1.id, '
+#     movie_id' => movie1.id
+#     })
+# casting1.save()
+#
+# casting2 = Casting.new({
+#     'star_id' => star2.id, '
+#     movie_id' => movie2.id
+#     })
+# casting1.save()
 
 binding.pry
 nil

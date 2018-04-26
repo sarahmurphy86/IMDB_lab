@@ -8,6 +8,14 @@ class Movie
     @title = options['title']
     @genre = options['genre']
     @rating = options['rating'].to_i
-  end 
+  end
+
+  def save()
+    sql = 'INSERT INTO movies (title, genre, rating)
+    VALUES ($1, $2, $3) RETURNING id'
+    values = [@title, @genre, @rating]
+    movie = SqlRunner.run(sql, values)[0]
+    @id  =  movie['id'].to_i
+  end
 
 end
