@@ -1,7 +1,8 @@
 require_relative("../db/sql_runner")
 
 class Star
-attr_reader :id, :first_name, :last_name
+attr_accessor :first_name, :last_name
+attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -17,12 +18,23 @@ attr_reader :id, :first_name, :last_name
     @id  =  star['id'].to_i
   end
 
+  def update()
+    sql = 'UPDATE stars SET (first_name, last_name) = ($1, $2) WHERE id = $3'
+    values = [@first_name, @last_name, @id]
+    SqlRunner.run(sql, values)
+  end
+
 
   def self.all()
     sql = 'SELECT * FROM stars'
     star_hashes = SqlRunner.run(sql)
     stars = star_hashes.map { |star| Star.new(star)}
     return stars
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM stars"
+    SqlRunner.run(sql)
   end
 
 
