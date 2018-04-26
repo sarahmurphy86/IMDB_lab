@@ -13,12 +13,12 @@ end
   def save()
     sql = 'INSERT INTO castings (star_id, movie_id)
     VALUES ($1, $2) RETURNING id'
-    values = [@movie_id, @star_id]
+    values = [@star_id, @movie_id]
     casting = SqlRunner.run(sql, values)[0]
     @id  =  casting['id'].to_i
   end
 
 ###METHOD
-  
+
 
 end

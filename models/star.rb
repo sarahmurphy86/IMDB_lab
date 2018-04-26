@@ -17,4 +17,15 @@ attr_reader :id, :first_name, :last_name
     @id  =  star['id'].to_i
   end
 
+
+  def self.all()
+    sql = 'SELECT * FROM stars'
+    star_hashes = SqlRunner.run(sql)
+    stars = star_hashes.map { |star| Star.new(star)}
+    return stars
+  end
+
+
+
+
 end
